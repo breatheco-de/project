@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BreatheCode Project</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Brea the Code Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="container fontFamily single-project">
         <div class="row" style="margin-top:55px">
@@ -34,12 +39,12 @@
 
         }
         window.onload = async () => {
-            const respJSON = await fetch('https://breathecode.herokuapp.com/v1/registry/asset/'+params.slug+'');
+            const respJSON = await fetch('https://breathecode.herokuapp.com/v1/registry/asset/' + params.slug + '');
             const project = await respJSON.json();
-            const respHTML = await fetch('https://breathecode.herokuapp.com/v1/registry/asset/'+params.slug+'.html');
+            const respHTML = await fetch('https://breathecode.herokuapp.com/v1/registry/asset/' + params.slug + '.html');
             const html = await respHTML.text();
             document.querySelector('#instructions').innerHTML = html
-            if(html.includes('<h1')) document.querySelector('#title').innerHTML = "";
+            if (html.includes('<h1')) document.querySelector('#title').innerHTML = "";
             else document.querySelector('#title').innerHTML = project.title
             document.querySelector('#metainfo').innerHTML = `
                 <div class="row p-1 sticky-top mt-2">
@@ -110,4 +115,5 @@
         }
     </script>
 </body>
+
 </html>
